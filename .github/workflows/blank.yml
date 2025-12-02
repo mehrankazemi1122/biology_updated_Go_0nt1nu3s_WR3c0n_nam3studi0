@@ -78,7 +78,8 @@ jobs:
         wget https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt -O raw_resolvers.txt
         echo 8.8.8.8 > trusted_resolver.txt
         massdns -r trusted_resolver.txt -t A -o J -w verified_resolvers.json --verify-ip raw_resolvers.txt -s 5000
-        cat verified_resolvers.json | jq -r '.["name"]' | sed -i 's/\.$//' > resolvers.txt
+        cat verified_resolvers.json | jq -r '.["name"]' > resolvers.txt
+        sed -i 's/\.$//' resolvers.txt
         echo "the number of resolvers is $(cat resolvers.txt | wc -l)"
         
         chmod +x cntns_subbrute_new
