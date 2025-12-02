@@ -1,7 +1,4 @@
 name: Masscan and ShuffleDNS Installation
-
-permissions:
-  contents: write
   
 on:
   push:
@@ -58,7 +55,6 @@ jobs:
       env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
       run: |
-        git pull --rebase origin main
         ls
         cd ../
         pwd
